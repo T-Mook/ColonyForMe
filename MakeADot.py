@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
-import numpy as np
 from matplotlib import animation
+from matplotlib.patches import Rectangle
+import numpy as np
 import random
 
 fig, ax = plt.subplots()
@@ -10,6 +11,10 @@ x = []
 y = []
 xpoint = 0
 ypoint = 0
+
+# Part : Draw Goal Zone
+currentAxis = plt.gca()
+currentAxis.add_patch(Rectangle(xy=(4.5, 4.5), width=1, height=1, alpha=1, facecolor='yellow', edgecolor='red'))
 
 # Part : Condition
 while (xpoint != 5 or ypoint != 5):
@@ -67,4 +72,5 @@ ani=animation.FuncAnimation(fig=fig, func=update_point, frames=len(x), fargs=(x,
 
 print(x)
 print(y)
+print("Total Try : "+str(len(x)))
 plt.show()
